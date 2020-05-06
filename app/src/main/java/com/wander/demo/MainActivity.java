@@ -1,19 +1,19 @@
 package com.wander.demo;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.wander.baselibrary.ioc.OnClickCheckUtils;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.wander.baselibrary.ioc.OnClick;
 import com.wander.baselibrary.ioc.OnClickCheck;
+import com.wander.baselibrary.ioc.OnClickCheckUtils;
 import com.wander.baselibrary.ioc.ViewBind;
 import com.wander.baselibrary.ioc.ViewUtils;
 
 public class MainActivity extends AppCompatActivity {
-    @ViewBind(R.id.tv_text)
+    @ViewBind({R.id.tv_ioc})
     private TextView textView;
 
     @Override
@@ -23,11 +23,10 @@ public class MainActivity extends AppCompatActivity {
 
         ViewUtils.inject(this);
 
-        textView.setText("IOC TEXTVIEW");
     }
 
-    @OnClick(R.id.tv_text)
-//    @OnClickCheck(type = OnClickCheckUtils.CHECK_ALL)
+    @OnClick(R.id.tv_ioc)
+    @OnClickCheck(type = OnClickCheckUtils.CHECK_CLICKFAST,time = 1000)
     private void onClick() {
         Toast.makeText(this, "sdasdad", Toast.LENGTH_SHORT).show();
     }
